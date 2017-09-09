@@ -1,0 +1,13 @@
+keytool -genkey -alias selfsigned -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650 -storepass Test2017
+Password Test2017
+server.port = 8443
+security.require-ssl=true
+server.ssl.key-store: keystore.p12
+server.ssl.key-store-password: Test2017
+server.ssl.keyStoreType: PKCS12
+server.ssl.keyAlias: tomcat
+
+keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass Test2017 -validity 360 -keysize 2048
+keytool -genkey -keyalg RSA -alias tomcat -keystore keystore.jks -storepass Test2017 -validity 360 -keysize 2048
+
+keytool -genkey -alias selfsigned_localhost -keyalg RSA -keysize 2048 -validity 700 -keypass changeit -storepass changeit -keystore demo.jks
